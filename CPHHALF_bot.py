@@ -23,8 +23,8 @@ def check_availability(webhook_url):
         response = requests.get(url)
         if response.status_code == 200:
             soup = BeautifulSoup(response.text, 'html.parser')
-            unavailable_text = "Der er ikke nogen startnumre til salg i øjeblikket. Prøv igen lidt senere."
-
+            unavailable_text = "II"
+            #Der er ikke nogen startnumre til salg i øjeblikket. Prøv igen lidt senere.
             if unavailable_text not in soup.text:
                 send_slack_notification(webhook_url, "Ticket Available! Check the website: " + url)
     except Exception as e:
