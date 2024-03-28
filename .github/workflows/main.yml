@@ -21,4 +21,4 @@ jobs:
         run: pip install -r requirements.txt  # Replace 'requirements.txt' with the name of your requirements file
 
       - name: Run script
-        run: python your_script.py  # Replace 'your_script.py' with the name of your Python script
+        run: python main.py #Replace 'your_script.py' with the name of your Python script
