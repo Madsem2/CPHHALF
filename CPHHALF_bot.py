@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import requests
-from bs4 import BeautifulSoup
+from bs4 import beautifulsoup4
 import time
 import json
 
