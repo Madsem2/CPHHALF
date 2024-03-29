@@ -1,24 +1,25 @@
-name: Run Script
+name: Check Ticket Availability
 
 on:
   schedule:
-    - cron: '*/5 * * * *'  # Run every 5 minutes
+    - cron: '*/5 * * * *'  # Runs the workflow every 5 minutes
 
 jobs:
-  run-script:
+  run_script:
+    name: Run Script
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v2
 
       - name: Set up Python
         uses: actions/setup-python@v2
-        with: 
-          python-version: '3.9'  # Replace '3.x' with the Python version you're using
+        with:
+          python-version: '3.9'
 
-      - name: Install dependencies
-        run: pip install -r requirements.txt  # Replace 'requirements.txt' with the name of your requirements file
-
-      - name: Run script
-        run: python CPHHALF_bot.py #Run the script
+      - name: Run Python script
+        run: python CPHHALF_bot.py
+        env:
+          PYTHONPATH: ./CPHHALF_bot.py  # Set the Python script's path as an environment variable
+          WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}  # Replace with your Slack webhook URL

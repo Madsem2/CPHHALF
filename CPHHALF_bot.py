@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 import requests
 from bs4 import BeautifulSoup
-import time
-import json
+import os
 
 def send_slack_notification(webhook_url, message):
     payload = {
@@ -17,25 +16,22 @@ def send_slack_notification(webhook_url, message):
     except Exception as e:
         print(f"Failed to send Slack notification: {e}")
 
-
 def check_availability(webhook_url):
     url = "https://secure.onreg.com/onreg2/bibexchange/?eventid=6277"
     try:
         response = requests.get(url)
         if response.status_code == 200:
             soup = BeautifulSoup(response.text, 'html.parser')
-            unavailable_text = "II"
-            #Der er ikke nogen startnumre til salg i øjeblikket. Prøv igen lidt senere.
+            unavailable_text = "II"  # Update this to match the text when tickets are unavailable
             if unavailable_text not in soup.text:
                 send_slack_notification(webhook_url, "Ticket Available! Check the website: " + url)
+            else:
+                print("Tickets are not available at the moment.")
     except Exception as e:
         print(f"Code encountered an error: {e}")
 
-
 if __name__ == "__main__":
-    webhook_url = 'https://hooks.slack.com/services/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'  # Replace with your Slack webhook URL
+    webhook_url = os.environ.get('WEBHOOK_URL')  # Retrieve the Slack webhook URL from environment variables
 
     print("Running script")
-    while True:
-        check_availability(webhook_url)
-        time.sleep(300)  # Check every 5 minutes
+    check_availability(webhook_url)
