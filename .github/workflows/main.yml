@@ -22,4 +22,4 @@ jobs:
         run: python CPHHALF_bot.py
         env:
           PYTHONPATH: ./CPHHALF_bot.py  # Set the Python script's path as an environment variable
-          WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}  # Replace with your Slack webhook URL
+          WEBHOOK_URL: ${{https://hooks.slack.com/services/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}}

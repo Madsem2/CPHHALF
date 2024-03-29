@@ -31,7 +31,7 @@ def check_availability(webhook_url):
         print(f"Code encountered an error: {e}")
 
 if __name__ == "__main__":
-    webhook_url = os.environ.get('WEBHOOK_URL')  # Retrieve the Slack webhook URL from environment variables
+    webhook_url = os.environ.get('https://hooks.slack.com/services/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')  # Retrieve the Slack webhook URL from environment variables
 
     print("Running script")
     check_availability(webhook_url)
