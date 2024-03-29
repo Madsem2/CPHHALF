@@ -14,11 +14,10 @@ jobs:
 
       - name: Set up Python
         uses: actions/setup-python@v2
-        with:
-          python-version: '3.9'  # Replace '3.x' with the Python version you're using
+        with: python-version: '3.9'  # Replace '3.x' with the Python version you're using
 
       - name: Install dependencies
         run: pip install -r requirements.txt  # Replace 'requirements.txt' with the name of your requirements file
 
       - name: Run script
-        run: CPHHALF_bot.py #Replace 'your_script.py' with the name of your Python script
+        run: CPHHALF\CPHHALF_bot.py #Run the script
