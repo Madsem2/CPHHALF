@@ -23,7 +23,7 @@ def check_availability(webhook_url):
     try:
         response = requests.get(url)
         if response.status_code == 200:
-            soup = BeautifulSoup(response.text, 'html.parser')
+            soup = beautifulsoup4(response.text, 'html.parser')
             unavailable_text = "II"
             #Der er ikke nogen startnumre til salg i øjeblikket. Prøv igen lidt senere.
             if unavailable_text not in soup.text:
