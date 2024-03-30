@@ -1,6 +1,6 @@
 #!/usr/bin/env python
-import requests
 from bs4 import BeautifulSoup
+import requests
 import os
 
 def send_slack_notification(webhook_url, message):
