@@ -21,8 +21,11 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      - name: Set environment variables
+        run: |
+          echo "WEBHOOK_URL=${{ secrets.SLACK_HOOK }}" >> $GITHUB_ENV
+
       - name: Run Python script
         run: python CPHHALF_bot.py
         env:
-          PYTHONPATH: ./CPHHALF_bot.py  # Set the Python script's path as an environment variable
-          WEBHOOK_URL: ${{ secrets.SLACK_HOOK }}
+          PYTHONPATH: ./CPHHALF_bot.py  # Set the Python script's path as an environment variable_HOOK }}
