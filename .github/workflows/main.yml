@@ -12,11 +12,14 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+        with:
+          node-version: '20'
 
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: '3.9'
+          node-version: '20'
 
       - name: Install dependencies
         run: pip install -r requirements.txt
@@ -28,4 +31,4 @@ jobs:
       - name: Run Python script
         run: python CPHHALF_bot.py
         env:
-          PYTHONPATH: ./CPHHALF_bot.py  # Set the Python script's path as an environment variable_HOOK }}
+          PYTHONPATH: ./CPHHALF_bot.py  # Set the Python script's path as an environment variable
