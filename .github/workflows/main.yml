@@ -1,32 +1,25 @@
 name: Check Ticket Availability
-
 on:
   schedule:
     - cron: '*/5 * * * *'  # Runs the workflow every 5 minutes
 
 jobs:
-  run_script:
-    name: Run Script
+  check_availability:
     runs-on: ubuntu-latest
-
+    
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.9'
-          node-version: '20'
-
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-
-      - name: Set environment variables
-        run: |
-          echo "WEBHOOK_URL=${{secrets.SLACK_HOOK}}" >> $GITHUB_ENV
-
-      - name: Run Python script
-        run: python CPHHALF_bot.py
-        env:
-          PYTHONPATH: ./CPHHALF_bot.py  # Set the Python script's path as an environment variable
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+        
+    - name: Install dependencies
+      run: pip install beautifulsoup4 requests
+      
+    - name: Run script
+      env:
+        SLACK_HOOK: ${{ secrets.SLACK_HOOK }}
+      run: python your_script.py
