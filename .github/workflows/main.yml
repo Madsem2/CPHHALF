@@ -20,6 +20,7 @@ jobs:
       run: pip install beautifulsoup4 requests
       
     - name: Run script
+      run: python your_script.py
       env:
         SLACK_HOOK: ${{ secrets.SLACK_HOOK }}
-      run: python your_script.py
+      
