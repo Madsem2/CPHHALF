@@ -1,7 +1,7 @@
 name: Check Ticket Availability
 on:
   schedule:
-    - cron: '*/15 * * * *'  # Runs the workflow every 5 minutes
+    - cron: '*/15 * * * *'  # Runs the workflow every 15 minutes
 
 jobs:
   check_availability:
