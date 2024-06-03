@@ -12,8 +12,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-        with:
-          node-version: '20'
 
       - name: Set up Python
         uses: actions/setup-python@v2
@@ -26,7 +24,7 @@ jobs:
 
       - name: Set environment variables
         run: |
-          echo "WEBHOOK_URL=${{ secrets.SLACK_HOOK }}" >> $GITHUB_ENV
+          echo "WEBHOOK_URL=${{secrets.SLACK_HOOK}}" >> $GITHUB_ENV
 
       - name: Run Python script
         run: python CPHHALF_bot.py
